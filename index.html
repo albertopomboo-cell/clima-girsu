@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0f2a3d">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Clima GIRSU">
+<link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAACu0lEQVR42u3dwVXCQBSG0WGOe61Da9BjO1ZgDVZgOx57sA9LcOfKAwQS8/6Z+611xOHmBYLI4fb+sUl/1W2B4BAcgkNwCA7BITgEh+AQHBIcgkNwCA7BITgEh+AQHIJDgkNwCA7BITgEh+AQHIJDcEhwCA4t78YWnOz76/P4F9w9PA35ix/826cLNExiBY7VTIynBI5NWIxBZHYcm7JIJzIvjn9jkUukkzHDz4Uj4x4K8jHXaaXUHVP/FNPJcHtmx1Hznijuo5Phts2Lo/70LnsLOxluZxv4VdmsiwfNFVIgBnhym4dj7DlRykcMjnnOHXV8dDKUOjnmZFFkeHQylIdjZhlFfvdud5SEg4wim9BtijJwkAEHGRkb0m2E/JmgMnEYG3CQAYdGOXLgCPCxF5GdX5V1TmmFX601OZxlSk4OY6P4CDE5jBA4+ICDjxFweMBRfxtNDsFheMDBBxxyWtGuw6N7qqJCOMhI2dhOhkrgIAMOMuDQ6A87urEhk0MlcRgbcAgOweGcIpNDcAiO5v0scMjkEByCQ1lvoIVD++HI+vR2Y8PkEBzGRn0cziwmh+AwPOCQ+rSfqKtak4MPOPiAgw84+IBDgkMt7bPsF72DwVlpLhznKGFidhzymENwCA7BITgkOASH4BAcvz2/vVsZDsGx/BDc4kBMXBkOwbHwzL3ugZi4MhyC46IH/GsdiIkrwyE4rrhOcP2BmLgyHIJDcGx37fmaKZ24MhyCY6WXrC47EBNXhkNwrPpK99IDMXFlOASHYVB4eJgcisUxzxOQgsPD5BAcgkNwCI7WPl5fNvquxJXhEBybHVLnf33iynAIDsOg8Nhocf9N8MhlxCu3OHFlOE5v94pbnLgyHPKYQ3AIDsEhOASHBIfgEByCQ3AIDsEhOASH4BActkBwCA7BITgEh+AQHBqkH0uoO1yH/wj6AAAAAElFTkSuQmCC">
+<link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAACu0lEQVR42u3dwVXCQBSG0WGOe61Da9BjO1ZgDVZgOx57sA9LcOfKAwQS8/6Z+611xOHmBYLI4fb+sUl/1W2B4BAcgkNwCA7BITgEh+AQHBIcgkNwCA7BITgEh+AQHIJDgkNwCA7BITgEh+AQHIJDcEhwCA4t78YWnOz76/P4F9w9PA35ix/826cLNExiBY7VTIynBI5NWIxBZHYcm7JIJzIvjn9jkUukkzHDz4Uj4x4K8jHXaaXUHVP/FNPJcHtmx1Hznijuo5Phts2Lo/70LnsLOxluZxv4VdmsiwfNFVIgBnhym4dj7DlRykcMjnnOHXV8dDKUOjnmZFFkeHQylIdjZhlFfvdud5SEg4wim9BtijJwkAEHGRkb0m2E/JmgMnEYG3CQAYdGOXLgCPCxF5GdX5V1TmmFX601OZxlSk4OY6P4CDE5jBA4+ICDjxFweMBRfxtNDsFheMDBBxxyWtGuw6N7qqJCOMhI2dhOhkrgIAMOMuDQ6A87urEhk0MlcRgbcAgOweGcIpNDcAiO5v0scMjkEByCQ1lvoIVD++HI+vR2Y8PkEBzGRn0cziwmh+AwPOCQ+rSfqKtak4MPOPiAgw84+IBDgkMt7bPsF72DwVlpLhznKGFidhzymENwCA7BITgkOASH4BAcvz2/vVsZDsGx/BDc4kBMXBkOwbHwzL3ugZi4MhyC46IH/GsdiIkrwyE4rrhOcP2BmLgyHIJDcGx37fmaKZ24MhyCY6WXrC47EBNXhkNwrPpK99IDMXFlOASHYVB4eJgcisUxzxOQgsPD5BAcgkNwCI7WPl5fNvquxJXhEBybHVLnf33iynAIDsOg8Nhocf9N8MhlxCu3OHFlOE5v94pbnLgyHPKYQ3AIDsEhOASHBIfgEByCQ3AIDsEhOASH4BActkBwCA7BITgEh+AQHBqkH0uoO1yH/wj6AAAAAElFTkSuQmCC">
+<title>Clima Tucumán · Plantas GIRSU</title>
+<style>
+  :root{
+    --bg:#f3f5f7; --card:#fff; --ink:#14212b; --muted:#5d6b77; --line:#e3e8ec;
+    --accent:#0f6e8c; --warn:#b45309; --warn-bg:#fff4e5; --bad:#b91c1c; --bad-bg:#fdecec; --ok:#15803d; --ok-bg:#e9f7ee;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{ --bg:#0d1419; --card:#16212a; --ink:#e8eef2; --muted:#9aaab6; --line:#24323d;
+      --accent:#4fb3d4; --warn:#f0a44b; --warn-bg:#3a2a12; --bad:#f17c7c; --bad-bg:#3a1717; --ok:#5fd08a; --ok-bg:#12301e; }
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--ink);-webkit-text-size-adjust:100%}
+  header{background:#0f2a3d;color:#fff;padding:calc(18px + env(safe-area-inset-top)) calc(16px + env(safe-area-inset-right)) 14px calc(16px + env(safe-area-inset-left))}
+  header h1{margin:0;font-size:1.25rem}
+  header p{margin:4px 0 0;font-size:.85rem;opacity:.8}
+  .bar{display:flex;gap:8px;align-items:center;margin-top:10px;font-size:.8rem;opacity:.85}
+  .bar button{margin-left:auto}
+  button{font:inherit;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:8px;padding:6px 10px;cursor:pointer}
+  header button{background:rgba(255,255,255,.12);color:#fff;border-color:rgba(255,255,255,.25)}
+  main{max-width:760px;margin:0 auto;padding:12px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;margin-bottom:12px}
+  .head{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
+  .head h2{margin:0;font-size:1.05rem}
+  .tag{font-size:.72rem;color:var(--muted);margin-top:2px}
+  .now{display:flex;align-items:center;gap:12px;margin:10px 0 6px}
+  .icon{font-size:2.6rem;line-height:1}
+  .temp{font-size:2.4rem;font-weight:700;letter-spacing:-1px}
+  .desc{color:var(--muted);font-size:.9rem}
+  .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:8px}
+  .stat{background:var(--bg);border-radius:10px;padding:8px 6px;text-align:center}
+  .stat b{display:block;font-size:.95rem}
+  .stat span{font-size:.68rem;color:var(--muted)}
+  .alert{border-radius:10px;padding:8px 10px;font-size:.85rem;margin-top:10px}
+  .alert.ok{background:var(--ok-bg);color:var(--ok)}
+  .alert.warn{background:var(--warn-bg);color:var(--warn)}
+  .alert.bad{background:var(--bad-bg);color:var(--bad)}
+  .alert ul{margin:4px 0 0;padding-left:18px}
+  .hours{display:flex;gap:6px;overflow-x:auto;padding:8px 0 4px;margin-top:8px;scrollbar-width:thin}
+  .h{flex:0 0 auto;width:54px;text-align:center;font-size:.75rem;background:var(--bg);border-radius:10px;padding:6px 2px}
+  .h .i{font-size:1.2rem}
+  .h .p{color:var(--accent);font-size:.68rem}
+  details{margin-top:8px}
+  summary{cursor:pointer;color:var(--accent);font-size:.88rem;padding:4px 0}
+  table{width:100%;border-collapse:collapse;font-size:.82rem;margin-top:6px}
+  td{padding:6px 4px;border-top:1px solid var(--line);white-space:nowrap}
+  td.r{text-align:right}
+  .min{color:var(--muted)}
+  .rain{color:var(--accent)}
+  .compass{display:inline-block;transition:transform .3s}
+  .err{color:var(--bad);font-size:.9rem}
+  .edit{font-size:.75rem;padding:4px 8px}
+  .editor{display:none;gap:6px;margin-top:10px;flex-wrap:wrap}
+  .editor.on{display:flex}
+  .editor input{font:inherit;width:110px;padding:6px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink)}
+  .rainbox{margin-top:10px;border:1px solid var(--line);border-radius:12px;padding:10px}
+  .rb-title{font-weight:700;font-size:.9rem}
+  .rb-next{font-size:.85rem;color:var(--accent);margin:2px 0 4px}
+  .past{display:flex;justify-content:space-between;align-items:flex-end;gap:4px;margin:10px 0 4px;font-size:.68rem;text-align:center}
+  .pd{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end}
+  .bar2{width:70%;background:var(--accent);border-radius:4px 4px 0 0;opacity:.75}
+  .rt{margin-top:2px} .rt td{padding:5px 2px}
+  .rt .sub{font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;border-top:none;padding-top:8px}
+  .rg{color:var(--muted);font-size:.72rem;margin-left:4px}
+  .cf{font-size:.68rem;padding:2px 6px;border-radius:6px;white-space:normal}
+  .cf.hi{background:var(--bad-bg);color:var(--bad)} .cf.md{background:var(--warn-bg);color:var(--warn)} .cf.lo{background:var(--ok-bg);color:var(--ok)}
+  footer{max-width:760px;margin:0 auto;padding:4px 16px calc(28px + env(safe-area-inset-bottom));font-size:.75rem;color:var(--muted)}
+  footer a{color:var(--accent)}
+  @media (max-width:420px){ .grid{grid-template-columns:repeat(2,1fr)} }
+</style>
+</head>
+<body>
+<header>
+  <h1>☁️ Clima Tucumán · Plantas GIRSU</h1>
+  <p>San Miguel de Tucumán, Los Aguirre y Los Pérez</p>
+  <div class="bar"><span id="updated">Cargando…</span><button id="refresh">↻ Actualizar</button></div>
+</header>
+<main id="list"></main>
+<footer>
+  Datos: <a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo</a>. La lluvia se calcula comparando tres modelos: ECMWF (europeo, el de mejor desempeño general), GFS (EE.UU.) e ICON (Alemania). Si los tres coinciden, el pronóstico es más confiable. Se actualiza solo cada 30 min.
+  Las coordenadas de las plantas son aproximadas: tocá <b>Ubicación</b> en cada tarjeta para corregirlas (se guardan en este navegador).<br>
+  Para avisos oficiales consultá el <a href="https://www.smn.gob.ar/alertas" target="_blank" rel="noopener">SMN</a>.
+</footer>
+
+<script>
+try{
+  const icon="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAACu0lEQVR42u3dwVXCQBSG0WGOe61Da9BjO1ZgDVZgOx57sA9LcOfKAwQS8/6Z+611xOHmBYLI4fb+sUl/1W2B4BAcgkNwCA7BITgEh+AQHBIcgkNwCA7BITgEh+AQHIJDgkNwCA7BITgEh+AQHIJDcEhwCA4t78YWnOz76/P4F9w9PA35ix/826cLNExiBY7VTIynBI5NWIxBZHYcm7JIJzIvjn9jkUukkzHDz4Uj4x4K8jHXaaXUHVP/FNPJcHtmx1Hznijuo5Phts2Lo/70LnsLOxluZxv4VdmsiwfNFVIgBnhym4dj7DlRykcMjnnOHXV8dDKUOjnmZFFkeHQylIdjZhlFfvdud5SEg4wim9BtijJwkAEHGRkb0m2E/JmgMnEYG3CQAYdGOXLgCPCxF5GdX5V1TmmFX601OZxlSk4OY6P4CDE5jBA4+ICDjxFweMBRfxtNDsFheMDBBxxyWtGuw6N7qqJCOMhI2dhOhkrgIAMOMuDQ6A87urEhk0MlcRgbcAgOweGcIpNDcAiO5v0scMjkEByCQ1lvoIVD++HI+vR2Y8PkEBzGRn0cziwmh+AwPOCQ+rSfqKtak4MPOPiAgw84+IBDgkMt7bPsF72DwVlpLhznKGFidhzymENwCA7BITgkOASH4BAcvz2/vVsZDsGx/BDc4kBMXBkOwbHwzL3ugZi4MhyC46IH/GsdiIkrwyE4rrhOcP2BmLgyHIJDcGx37fmaKZ24MhyCY6WXrC47EBNXhkNwrPpK99IDMXFlOASHYVB4eJgcisUxzxOQgsPD5BAcgkNwCI7WPl5fNvquxJXhEBybHVLnf33iynAIDsOg8Nhocf9N8MhlxCu3OHFlOE5v94pbnLgyHPKYQ3AIDsEhOASHBIfgEByCQ3AIDsEhOASH4BActkBwCA7BITgEh+AQHBqkH0uoO1yH/wj6AAAAAElFTkSuQmCC";
+  const man={name:"Clima Tucumán · Plantas GIRSU",short_name:"Clima GIRSU",start_url:location.href,display:"standalone",
+    background_color:"#0f2a3d",theme_color:"#0f2a3d",icons:[{src:icon,sizes:"180x180",type:"image/png"}]};
+  const l=document.createElement("link"); l.rel="manifest";
+  l.href=URL.createObjectURL(new Blob([JSON.stringify(man)],{type:"application/manifest+json"}));
+  document.head.appendChild(l);
+}catch(e){}
+const DEFAULTS = [
+  { id:"smt",  name:"San Miguel de Tucumán", tag:"Capital", lat:-26.8083, lon:-65.2176, plant:false },
+  { id:"agui", name:"Los Aguirre",           tag:"Planta GIRSU · zona San Felipe", lat:-26.875, lon:-65.245, plant:true },
+  { id:"pere", name:"Los Pérez",             tag:"Planta GIRSU · Cruz Alta (Overo Pozo)", lat:-26.900, lon:-65.000, plant:true },
+];
+
+function loadPlaces(){
+  try{
+    const saved = JSON.parse(localStorage.getItem("clima-coords")||"{}");
+    return DEFAULTS.map(p => saved[p.id] ? {...p, ...saved[p.id]} : {...p});
+  }catch(e){ return DEFAULTS.map(p=>({...p})); }
+}
+function saveCoords(id, lat, lon){
+  try{
+    const saved = JSON.parse(localStorage.getItem("clima-coords")||"{}");
+    saved[id] = {lat, lon};
+    localStorage.setItem("clima-coords", JSON.stringify(saved));
+  }catch(e){}
+}
+
+let places = loadPlaces();
+
+const WMO = {
+  0:["☀️","Despejado"],1:["🌤️","Mayormente despejado"],2:["⛅","Parcialmente nublado"],3:["☁️","Nublado"],
+  45:["🌫️","Niebla"],48:["🌫️","Niebla con escarcha"],
+  51:["🌦️","Llovizna débil"],53:["🌦️","Llovizna"],55:["🌧️","Llovizna intensa"],
+  56:["🌧️","Llovizna helada"],57:["🌧️","Llovizna helada intensa"],
+  61:["🌧️","Lluvia débil"],63:["🌧️","Lluvia"],65:["🌧️","Lluvia fuerte"],
+  66:["🌧️","Lluvia helada"],67:["🌧️","Lluvia helada fuerte"],
+  71:["🌨️","Nevada débil"],73:["🌨️","Nevada"],75:["❄️","Nevada fuerte"],77:["🌨️","Granizo fino"],
+  80:["🌦️","Chaparrones débiles"],81:["🌧️","Chaparrones"],82:["⛈️","Chaparrones fuertes"],
+  85:["🌨️","Chaparrones de nieve"],86:["❄️","Chaparrones de nieve fuertes"],
+  95:["⛈️","Tormenta"],96:["⛈️","Tormenta con granizo"],99:["⛈️","Tormenta fuerte con granizo"]
+};
+const wmo = c => WMO[c] || ["❔","—"];
+const DIRS = ["N","NNE","NE","ENE","E","ESE","SE","SSE","S","SSO","SO","OSO","O","ONO","NO","NNO"];
+const dirName = d => DIRS[Math.round(d/22.5)%16];
+const DAYS = ["Dom","Lun","Mar","Mié","Jue","Vie","Sáb"];
+const r = n => Math.round(n);
+
+function buildURL(){
+  const q = new URLSearchParams({
+    latitude: places.map(p=>p.lat).join(","),
+    longitude: places.map(p=>p.lon).join(","),
+    current: "temperature_2m,relative_humidity_2m,apparent_temperature,precipitation,weather_code,wind_speed_10m,wind_direction_10m,wind_gusts_10m",
+    hourly: "temperature_2m,precipitation_probability,precipitation,weather_code,wind_gusts_10m",
+    daily: "weather_code,temperature_2m_max,temperature_2m_min,precipitation_sum,precipitation_probability_max,wind_speed_10m_max,wind_gusts_10m_max,wind_direction_10m_dominant",
+    timezone: "America/Argentina/Tucuman",
+    forecast_days: "7",
+    past_days: "7"
+  });
+  return "https://api.open-meteo.com/v1/forecast?" + q.toString();
+}
+
+// Lluvia con varios modelos: ECMWF (principal) + GFS (EE.UU.) + ICON (Alemania)
+const MODEL_SETS = [
+  ["ecmwf_ifs","gfs_seamless","icon_seamless"],
+  ["ecmwf_ifs025","gfs_seamless","icon_seamless"]
+];
+const MODEL_LABEL = k => k.includes("ecmwf")?"ECMWF":k.includes("gfs")?"GFS":k.includes("icon")?"ICON":k;
+function rainURL(models){
+  const q = new URLSearchParams({
+    latitude: places.map(p=>p.lat).join(","),
+    longitude: places.map(p=>p.lon).join(","),
+    hourly: "precipitation", daily: "precipitation_sum", models: models.join(","),
+    timezone: "America/Argentina/Tucuman", forecast_days: "7", past_days: "7"
+  });
+  return "https://api.open-meteo.com/v1/forecast?" + q.toString();
+}
+async function loadRainModels(){
+  for(const set of MODEL_SETS){
+    try{
+      const res = await fetch(rainURL(set)); if(!res.ok) continue;
+      let j = await res.json(); if(!Array.isArray(j)) j=[j];
+      if(j[0] && j[0].hourly && Object.keys(j[0].hourly).some(k=>k.startsWith("precipitation_"))) return j;
+    }catch(e){}
+  }
+  return null;
+}
+const median = a => { const s=a.filter(v=>v!=null).sort((x,y)=>x-y); if(!s.length) return null; const m=Math.floor(s.length/2); return s.length%2?s[m]:(s[m-1]+s[m])/2; };
+// Devuelve series por modelo; si no hay multi-modelo, usa la serie única
+function rainSeries(d, m){
+  if(m){
+    const keys = Object.keys(m.hourly).filter(k=>k.startsWith("precipitation_"));
+    const dkeys = Object.keys(m.daily).filter(k=>k.startsWith("precipitation_sum_"));
+    if(keys.length) return {time:m.hourly.time, models:keys.map(k=>({name:MODEL_LABEL(k), v:m.hourly[k]})),
+      dtime:m.daily.time, dmodels:dkeys.map(k=>({name:MODEL_LABEL(k), v:m.daily[k]}))};
+  }
+  return {time:d.hourly.time, models:[{name:"Modelo",v:d.hourly.precipitation}], dtime:d.daily.time, dmodels:[{name:"Modelo",v:d.daily.precipitation_sum}]};
+}
+function windowStats(S, from, to){
+  const sums = S.models.map(md=>{ let s=0, any=false; S.time.forEach((t,i)=>{const ts=new Date(t).getTime(); if(ts>=from&&ts<to&&md.v[i]!=null){s+=md.v[i]; any=true;}}); return any?s:null; });
+  const valid = sums.filter(v=>v!=null);
+  return { sums, med: median(valid)??0, min: valid.length?Math.min(...valid):0, max: valid.length?Math.max(...valid):0,
+           agree: valid.filter(v=>v>=1).length, n: valid.length };
+}
+
+// Alertas operativas pensadas para planta de residuos (próximas 24 h)
+function operativeAlerts(d){
+  const now = new Date(d.current.time).getTime();
+  let rain24=0, maxProb=0, maxGust=0, storm=false, maxT=-99;
+  d.hourly.time.forEach((t,i)=>{
+    const ts = new Date(t).getTime();
+    if(ts>=now && ts<now+24*3600e3){
+      rain24 += d.hourly.precipitation[i]||0;
+      maxProb = Math.max(maxProb, d.hourly.precipitation_probability[i]||0);
+      maxGust = Math.max(maxGust, d.hourly.wind_gusts_10m[i]||0);
+      maxT = Math.max(maxT, d.hourly.temperature_2m[i]);
+      if([95,96,99].includes(d.hourly.weather_code[i])) storm = true;
+    }
+  });
+  const items=[]; let level="ok";
+  const bump = l => { if(l==="bad"||(l==="warn"&&level==="ok")) level=l; };
+  if(storm){ items.push("Tormentas eléctricas previstas"); bump("bad"); }
+  if(rain24>=20){ items.push(`Lluvia acumulada ~${r(rain24)} mm: caminos y celdas complicados, más lixiviados`); bump("bad"); }
+  else if(rain24>=5){ items.push(`Lluvia acumulada ~${r(rain24)} mm`); bump("warn"); }
+  else if(maxProb>=60){ items.push(`Probabilidad de lluvia hasta ${maxProb}%`); bump("warn"); }
+  if(maxGust>=60){ items.push(`Ráfagas de hasta ${r(maxGust)} km/h: riesgo de voladura de residuos`); bump("bad"); }
+  else if(maxGust>=40){ items.push(`Ráfagas de hasta ${r(maxGust)} km/h`); bump("warn"); }
+  if(maxT>=36){ items.push(`Calor extremo: máxima ~${r(maxT)}°C (pausas e hidratación del personal)`); bump("warn"); }
+  return {level, items};
+}
+
+function card(p, d, m){
+  const c = d.current, [ic, txt] = wmo(c.weather_code);
+  const now = new Date(c.time).getTime();
+  const hrs = d.hourly.time.map((t,i)=>({t,i})).filter(o=>new Date(o.t).getTime()>=now-3600e3).slice(0,24);
+  const hoursHTML = hrs.map(({t,i})=>{
+    const h = new Date(t).getHours();
+    return `<div class="h"><div>${String(h).padStart(2,"0")}h</div><div class="i">${wmo(d.hourly.weather_code[i])[0]}</div><b>${r(d.hourly.temperature_2m[i])}°</b><div class="p">💧${d.hourly.precipitation_probability[i]??0}%</div></div>`;
+  }).join("");
+  // Lluvia: lo que cayó y lo que puede caer (consenso de modelos)
+  const S = rainSeries(d, m);
+  const H=3600e3;
+  const past24=windowStats(S,now-24*H,now), past7=windowStats(S,now-168*H,now);
+  const next24=windowStats(S,now,now+24*H), next72=windowStats(S,now,now+72*H), next7=windowStats(S,now,now+168*H);
+  const todayStr = c.time.slice(0,10);
+  const f = n => n<0.1?"0":n<10?n.toFixed(1):String(Math.round(n));
+  const rng = w => w.n>1 && (w.max-w.min)>=1 ? `<span class="rg">${f(w.min)}–${f(w.max)}</span>` : "";
+  const conf = w => {
+    if(w.n<2) return "";
+    if(w.agree===w.n) return `<span class="cf hi">${w.n}/${w.n} coinciden: lluvia probable</span>`;
+    if(w.agree===0) return `<span class="cf lo">${w.n}/${w.n} sin lluvia</span>`;
+    return `<span class="cf md">${w.agree}/${w.n} modelos dan lluvia: dudoso</span>`;
+  };
+  // próxima lluvia: primera hora en que la mediana de modelos >= 0.3 mm
+  let nextIdx=-1;
+  for(let i=0;i<S.time.length;i++){ if(new Date(S.time[i]).getTime()<now) continue; const md=median(S.models.map(x=>x.v[i])); if(md!=null&&md>=0.3){nextIdx=i;break;} }
+  let nextTxt = "No se espera lluvia en los próximos 7 días";
+  if(nextIdx>=0){
+    const nt=new Date(S.time[nextIdx]); const dd=Math.floor((nt-new Date(todayStr+"T00:00"))/864e5);
+    nextTxt = `Próxima lluvia: ${dd===0?"hoy":dd===1?"mañana":DAYS[nt.getDay()]+" "+nt.getDate()} desde las ~${String(nt.getHours()).padStart(2,"0")}h`;
+  }
+  const dmed = i => median(S.dmodels.map(x=>x.v[i]));
+  const sdi = S.dtime.map((t,i)=>({t,i}));
+  const pastDays = sdi.filter(o=>o.t<todayStr).slice(-7);
+  const row = (label, w, cls, noConf) => `<tr><td>${label}</td><td class="r"><b class="${cls||""}">${f(w.med)} mm</b> ${rng(w)}</td><td class="r">${noConf?"":conf(w)}</td></tr>`;
+  const rainHTML = `<div class="rainbox">
+    <div class="rb-title">🌧️ Lluvia</div>
+    <div class="rb-next">${nextTxt}</div>
+    <table class="rt">
+      <tr><td colspan="3" class="sub">Lo que llovió</td></tr>
+      ${row("Últimas 24 h", past24, "", true)}
+      ${row("Últimos 7 días", past7, "", true)}
+      <tr><td colspan="3" class="sub">Lo que puede llover</td></tr>
+      ${row("Próximas 24 h", next24, "rain")}
+      ${row("Próximos 3 días", next72, "rain")}
+      ${row("Próximos 7 días", next7, "rain")}
+    </table>
+    <div class="past">${pastDays.map(({t,i})=>{const v=dmed(i)||0;const dt=new Date(t+"T12:00");return `<div class="pd"><div class="bar2" style="height:${Math.min(40,v*2)+2}px"></div><div>${f(v)}</div><div class="min">${DAYS[dt.getDay()]} ${dt.getDate()}</div></div>`;}).join("")}</div>
+    <div class="tag">${S.models.length>1?`Valor = mediana de ${S.models.map(x=>x.name).join(", ")}; en gris el rango entre modelos.`:"Un solo modelo disponible."} Barras: mm por día de la última semana (estimado).</div>
+  </div>`;
+  const dRain = t => { const i=S.dtime.indexOf(t); if(i<0) return null; const vals=S.dmodels.map(x=>x.v[i]).filter(v=>v!=null); return {med:median(vals)??0, agree:vals.filter(v=>v>=1).length, n:vals.length}; };
+  const di = d.daily.time.map((t,i)=>({t,i}));
+  const dailyHTML = di.filter(o=>o.t>=todayStr).map(({t,i})=>{
+    const dt = new Date(t+"T12:00");
+    const k = Math.round((dt - new Date(todayStr+"T12:00"))/864e5);
+    const label = k===0?"Hoy":k===1?"Mañana":`${DAYS[dt.getDay()]} ${dt.getDate()}`;
+    return `<tr><td>${label}</td><td>${wmo(d.daily.weather_code[i])[0]}</td>
+      <td class="r"><b>${r(d.daily.temperature_2m_max[i])}°</b> <span class="min">${r(d.daily.temperature_2m_min[i])}°</span></td>
+      <td class="r rain">${(()=>{const x=dRain(t); return x? `${f(x.med)} mm${x.n>1?` · ${x.agree}/${x.n}`:""}` : `${f(d.daily.precipitation_sum[i]||0)} mm`;})()}</td>
+      <td class="r">💨${r(d.daily.wind_gusts_10m_max[i])} ${dirName(d.daily.wind_direction_10m_dominant[i])}</td></tr>`;
+  }).join("");
+  let alertHTML = "";
+  if(p.plant){
+    const a = operativeAlerts(d);
+    alertHTML = a.items.length
+      ? `<div class="alert ${a.level}"><b>${a.level==="bad"?"⚠️ Atención operativa (24 h)":"⚠️ A tener en cuenta (24 h)"}</b><ul>${a.items.map(x=>`<li>${x}</li>`).join("")}</ul></div>`
+      : `<div class="alert ok">✅ Sin condiciones adversas previstas en las próximas 24 h</div>`;
+  }
+  return `<section class="card">
+    <div class="head"><div><h2>${p.name}</h2><div class="tag">${p.tag}</div></div>
+      <button class="edit" data-id="${p.id}">📍 Ubicación</button></div>
+    <div class="editor" id="ed-${p.id}">
+      <input inputmode="decimal" id="lat-${p.id}" value="${p.lat}" aria-label="Latitud">
+      <input inputmode="decimal" id="lon-${p.id}" value="${p.lon}" aria-label="Longitud">
+      <button data-save="${p.id}">Guardar</button><button data-reset="${p.id}">Original</button>
+    </div>
+    <div class="now"><div class="icon">${ic}</div><div><div class="temp">${r(c.temperature_2m)}°C</div><div class="desc">${txt} · Sensación ${r(c.apparent_temperature)}°</div></div></div>
+    <div class="grid">
+      <div class="stat"><b>${c.relative_humidity_2m}%</b><span>Humedad</span></div>
+      <div class="stat"><b><span class="compass" style="transform:rotate(${c.wind_direction_10m+180}deg)">↑</span> ${r(c.wind_speed_10m)}</b><span>Viento km/h · ${dirName(c.wind_direction_10m)}</span></div>
+      <div class="stat"><b>${r(c.wind_gusts_10m)}</b><span>Ráfagas km/h</span></div>
+      <div class="stat"><b>${(c.precipitation||0).toFixed(1)}</b><span>Lluvia mm (ahora)</span></div>
+    </div>
+    ${alertHTML}
+    ${rainHTML}
+    <div class="hours">${hoursHTML}</div>
+    <details><summary>Pronóstico 7 días</summary><table>${dailyHTML}</table></details>
+  </section>`;
+}
+
+async function load(){
+  const upd = document.getElementById("updated");
+  upd.textContent = "Actualizando…";
+  try{
+    const [res, mdata] = await Promise.all([fetch(buildURL()), loadRainModels()]);
+    if(!res.ok) throw new Error("HTTP "+res.status);
+    let data = await res.json();
+    if(!Array.isArray(data)) data = [data];
+    document.getElementById("list").innerHTML = places.map((p,i)=>card(p, data[i], mdata&&mdata[i])).join("");
+    upd.textContent = "Actualizado " + new Date().toLocaleTimeString("es-AR",{hour:"2-digit",minute:"2-digit"});
+  }catch(e){
+    upd.textContent = "Sin conexión";
+        document.getElementById("list").innerHTML = `<div class="card err"><b>No se pudo obtener el pronóstico.</b><br>`+
+      (navigator.onLine!==false
+        ? `Si abriste el archivo dentro de la app de Claude, WhatsApp, Mail o la vista previa de Archivos, esas vistas bloquean internet. Abrilo desde un link en <b>Safari</b> (iPhone) o <b>Chrome</b> (Android).`
+        : `Revisá la conexión a internet.`)+`<br><br><button onclick="load()">Reintentar</button></div>`;
+  }
+}
+
+document.addEventListener("click", e=>{
+  const t = e.target.closest("button"); if(!t) return;
+  if(t.id==="refresh") return load();
+  if(t.dataset.id) return document.getElementById("ed-"+t.dataset.id).classList.toggle("on");
+  if(t.dataset.save){
+    const id=t.dataset.save, lat=parseFloat(document.getElementById("lat-"+id).value.replace(",", ".")), lon=parseFloat(document.getElementById("lon-"+id).value.replace(",", "."));
+    if(isNaN(lat)||isNaN(lon)||Math.abs(lat)>90||Math.abs(lon)>180) return;
+    saveCoords(id,lat,lon); places=loadPlaces(); load();
+  }
+  if(t.dataset.reset){
+    try{ const s=JSON.parse(localStorage.getItem("clima-coords")||"{}"); delete s[t.dataset.reset]; localStorage.setItem("clima-coords",JSON.stringify(s)); }catch(e){}
+    places=loadPlaces(); load();
+  }
+});
+
+load();
+setInterval(load, 30*60*1000);
+</script>
+</body>
+</html>
