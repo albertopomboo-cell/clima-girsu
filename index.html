@@ -200,7 +200,7 @@ function windowStats(S, from, to){
 }
 
 // Alertas operativas pensadas para planta de residuos (próximas 24 h)
-function operativeAlerts(d){
+function operativeAlerts(d, rainMed){
   const now = new Date(d.current.time).getTime();
   let rain24=0, maxProb=0, maxGust=0, storm=false, maxT=-99;
   d.hourly.time.forEach((t,i)=>{
@@ -213,6 +213,7 @@ function operativeAlerts(d){
       if([95,96,99].includes(d.hourly.weather_code[i])) storm = true;
     }
   });
+  if(rainMed!=null) rain24 = rainMed;
   const items=[]; let level="ok";
   const bump = l => { if(l==="bad"||(l==="warn"&&level==="ok")) level=l; };
   if(storm){ items.push("Tormentas eléctricas previstas"); bump("bad"); }
@@ -287,7 +288,7 @@ function card(p, d, m){
   }).join("");
   let alertHTML = "";
   if(p.plant){
-    const a = operativeAlerts(d);
+    const a = operativeAlerts(d, next24.med);
     alertHTML = a.items.length
       ? `<div class="alert ${a.level}"><b>${a.level==="bad"?"⚠️ Atención operativa (24 h)":"⚠️ A tener en cuenta (24 h)"}</b><ul>${a.items.map(x=>`<li>${x}</li>`).join("")}</ul></div>`
       : `<div class="alert ok">✅ Sin condiciones adversas previstas en las próximas 24 h</div>`;
